@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <title>Page title</title>
+     <!-- font awesome -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
+     <!-- close -->
+     <link rel="stylesheet" href="paint.css">
+</head>
+<body>
+     <div class="app">
+        <div class="controls">
+            <div class="title">Paint</div>
+            <div class="type">
+                <input type="radio" name="pen-type" id="pen-pencil" checked>
+                <label for="pen-pencil">
+                    <i class="fa-thin fa-pen"></i>
+                </label>
+                <input type="radio" name="pen-type" id="pen-brush">
+                <label for="pen-brush">
+                    <i class="fa-thin fa-paintbrush"></i>
+                </label>
+            </div>
+            <div class="size">
+                <label for="pen-size">size</label>
+                <input type="range" id="pen-size" min="1" max="50">
+            </div>
+            <div class="color">
+                <label for="pen-color">Color</label>
+                <input type ="color" id="pen-color" value="#000000">
+            </div>
+            <div class="actions">
+                <button id="reset-canvas">Canvas</button>
+                <button id="save-canvas">Save</button>
+            </div>
+        </div>
+        <div id="canvas-wrapper"></div>
+    </div>
+     <script src="paint.js"></script>
+</body>
+</html>
