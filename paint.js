@@ -20,7 +20,7 @@ function mouseDragged() {
 }
  */
  const canvas = document.getElementById("canvas-wrapper");
- canvas.width = window.innerwidth =60;
+ canvas.width = window.innerwidth -60;
  canvas.height =400;
  let context=canvas.getContext("2d");
  context.fillStyle = "white";
