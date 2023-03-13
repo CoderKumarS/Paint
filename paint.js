@@ -29,7 +29,7 @@ function mouseDragged() {
  let drawWidth="2";
  let isDrawing=false;
  
- canvas.addEventListener("touchmouve", start,false);
+ canvas.addEventListener("touchmove", start,false);
  canvas.addEventListener("touchstart", draw,false);
  canvas.addEventListener("mousedown", start,false);
  canvas.addEventListener("mousemove", draw,false);
