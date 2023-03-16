@@ -4,26 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canvas</title>
+    <title>Paint</title>
     <link rel="stylesheet" href="canvas.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,500,1,200" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Iso&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="main"> 
-      <div class="nav">
-         <p>Paint </p>
-            <input type="color" name="" id="color" value="#43da86">
-            <input type="range" name="" id="range" min="10" max="100">
-            <input type="color" name="" id="bgColor">
-            <button id="reset" class="button"><span class="material-symbols-outlined" class="icon">
-restart_alt
-</span></button>
-            <button class="save" id="save" class="button"><span class="material-symbols-outlined" class="icon">
-download
-</span></button>
+    <div id="main">
+        <p>Paint </p>
+        <div class="nav">
+            <input type="color" id="color" value="#40e0ff">
+            <input type="color" id="bgColor" value="#F0F1F2">
+            <input type="range" id="range" min="10" max="100" value="30">
+            <button id="undo" class="button">
+                <span class="material-symbols-outlined icon">undo</span>
+            </button>
+            <button id="reset" class="button">
+                <span class="material-symbols-outlined icon">restart_alt </span>
+            </button>
+            <button class="save button" id="save" class="button">
+                <span class="material-symbols-outlined icon"> download </span>
+            </button>
         </div>
         <canvas></canvas>
-    </div>
-    <script src="canvas.js"></script>
+   </div>
+   <script src="canvas.js"></script>
 </body>
 </html>
