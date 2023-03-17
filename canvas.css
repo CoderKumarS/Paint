@@ -42,19 +42,25 @@ canvas{
     font-family: 'Rubik Iso', cursive;     
     color:#3B4E59; 
 }
+
+.mx{
+     margin: 0 2rem;
+}
+  
 .icon{
    margin: 0;
    padding: 0;
 }
 
 .button{
-   margin : 0 5px;
    text-align:center;
-   border-radius:50px;
+   border-radius:20px;
+   width: 45px;
+   height: 40px;
 }
 
 #range{
-    width: 7rem;
+    width: 10rem;
 }
 
 #bgColor {
@@ -97,5 +103,8 @@ canvas{
 @media only screen and (max-width: 600px) {
   #range {
     width: 4rem;
+  }
+  .mx{
+     margin: 0px 5px;
   }
 }
