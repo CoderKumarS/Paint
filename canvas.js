@@ -1,14 +1,17 @@
 var canvas = document.querySelector("canvas");
 canvas.width = window.innerWidth-100;
-canvas.height = window.innerHeight-100 ;
+canvas.height = window.innerHeight-145 ;
+
+var dis = canvas.getBoundingClientRect();
 
 window.addEventListener("resize", (e)=>{
    canvas.width = window.innerWidth-100;
-   canvas.height = window.innerHeight-100 ;
+   canvas.height = window.innerHeight-145 ;
+   var dis = canvas.getBoundingClientRect();
 },false);
 
 var body = document.getElementById("main");
-body.style.backgroundColor = "#8098ff";
+body.style.backgroundColor = "#A7C6D9";
 
 body.width = window.innerWidth;
 body.height = window.innerHeight ;
@@ -20,56 +23,83 @@ theInput.addEventListener("input", function(){
   canvas.style.backgroundColor = theColor;
 }, false);
  
-var context = canvas.getContext('2d');
+var c = canvas.getContext('2d');
 var touch = {
     x: undefined,
     y: undefined 
 }
+
+var undoArray = [];
+var index = -1;
+
 canvas.addEventListener("pointerdown", start,false);
 canvas.addEventListener("pointermove", draw,false);
-function start(event) {
-    // console.log(event);
-    touch.x = event.pageX;
-    touch.y = event.pageY;
-    // console.log(mouse);
-    context.beginPath();
-    context.moveTo(touch.x-50,touch.y-50);
-}
-function draw(event) {
-    // console.log(event);
-    touch.x = event.pageX;
-    touch.y = event.pageY;
-    context.beginPath();
-    context.lineTo(touch.x-50,touch.y-50);
-    context.strokeStyle = color.value;
-    context.lineCap = "round";
-    context.lineJoin = "round";
-    context.lineWidth= range.value;
-    context.stroke();
-    /* event.preventDefault(); */
+canvas.addEventListener("pointerout", stop,false);
+
+function start(e) {
+    touch.x = e.pageX;
+    touch.y = e.pageY;
+    c.beginPath();
+    c.moveTo(touch.x-dis.x,touch.y-dis.y);
 }
 
-window.addEventListener("touchstop", stop,false);
+function draw(e) {
+    touch.x = e.pageX;
+    touch.y = e.pageY;
+    c.beginPath();        
+    c.lineTo(touch.x-dis.x,touch.y-dis.y);
+    c.strokeStyle = color.value;
+    c.lineCap = "round";
+    c.lineJoin = "round";
+    c.lineWidth= range.value;
+    c.stroke();
+}
 
-function stop(event) {
-    context.stroke();
-    context.closePath();
-    /* event.preventDefault(); */
+function stop(e) {
+    c.stroke();
+    c.closePath();
+    /* 
+    if(e.type != "pointerout") {
+       undoArray.push(c.getImageData(0,0,
+                   canvas.width, canvas.height));
+       index+=1;
+       console.log(undoArray);
+    } */
+    undoArray.push(c.getImageData(0,0,canvas.width, canvas.height));
+    index+=1;
 }
 
 document.getElementById("reset").addEventListener("click", resetCanvas);
 
-function resetCanvas(event) {
-    context.fillStyle="#d5dfffb2";
-    context.clearRect(0,0,canvas.width, canvas.height);
-    event.preventDefault();
+function resetCanvas(e) {
+    c.fillStyle="#d5dfffb2";
+    c.clearRect(0,0,canvas.width, canvas.height);
+    
+    undoArray = [];
+    index = -1;
+}
+
+document.getElementById("undo").addEventListener("click", undoCanvas);
+
+function undoCanvas(e) {
+    if(index <= 0) {
+       resetCanvas();
+    }else {
+       index-=1;
+       undoArray.pop();
+       c.putImageData(undoArray[index], 0, 0);
+    }
 }
 
 document.getElementById("save").addEventListener("click", saveCanvas);
 
-function saveCanvas(event) {
+function saveCanvas(e) {
     const link = document.createElement("a"); 
-     link.download = "canvas.png"; 
+     link.download = "paint.jpg"; 
      link.href = canvas.toDataURL(); 
      link.click(); 
 }
+
+window.onbeforeunload = function() {
+  return "Data will be lost if you leave the page, are you sure?";
+};
