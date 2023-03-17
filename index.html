@@ -5,26 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paint</title>
-    <link rel="stylesheet" href="canvas.css">
+    <link rel="stylesheet" href="canvas.css"> 
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,500,1,200" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik+Iso&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik+Iso&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="main">
         <p>Paint </p>
         <div class="nav">
-            <input type="color" id="color" value="#40e0ff">
-            <input type="color" id="bgColor" value="#F0F1F2">
-            <input type="range" id="range" min="10" max="100" value="30">
-            <button id="undo" class="button">
+            <input type="color" id="color" class="mx" value="#40e0ff">
+            <input type="color" id="bgColor" class="mx" value="#F0F1F2">
+            <input type="range" id="range" class="mx" min="10" max="100" value="30">
+            <button id="undo" class="button mx">
                 <span class="material-symbols-outlined icon">undo</span>
             </button>
-            <button id="reset" class="button">
+            <button id="reset" class="button mx" ondblclick="window.location.reload()">
                 <span class="material-symbols-outlined icon">restart_alt </span>
             </button>
-            <button class="save button" id="save" class="button">
+            <button class="save button mx" id="save" class="button">
                 <span class="material-symbols-outlined icon"> download </span>
             </button>
         </div>
